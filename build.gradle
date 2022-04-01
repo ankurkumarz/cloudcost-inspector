@@ -1,0 +1,97 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
+    }
+}
+plugins {
+    id 'maven-publish'
+    id 'application'
+    id 'org.springframework.boot' version '2.5.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'com.jfrog.artifactory' version 'latest.release'
+}
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+    repositories {
+        maven {
+            url "https://ankurkumarz.jfrog.io/artifactory"
+            credentials {
+                username = "$usr"
+                password = "$pwd"
+            }
+        }
+    }
+}
+configurations {
+    published
+}
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-config-server:3.0.5'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.1'
+    implementation 'org.springframework.cloud:spring-cloud-starter:3.0.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.2'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.4'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    runtimeOnly 'com.h2database:h2'
+}
+artifactory {
+    contextUrl = 'https://ankurkumarz.jfrog.io/artifactory'
+    publish {
+        repository {
+            repoKey = "default-maven-local"
+            username = "$usr"
+            password = "$pwd"
+        }
+        publishBuildInfo = true
+        publishArtifacts = true
+        publishPom = true
+        defaults {
+            // Reference to Gradle publications defined in the build script.
+            // This is how we tell the Artifactory Plugin which artifacts should be
+            // published to Artifactory.
+            publications('mavenJava')
+            publishArtifacts = true
+            // Properties to be attached to the published artifacts.
+            properties = ['qa.level': 'basic', 'dev.team' : 'core']
+            publishPom = true // Publish generated POM files to Artifactory (true by default)
+            publishIvy = true // Publish generated Ivy descriptor files to Artifactory (true by default)
+        }
+    }
+}
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.ps.cloudcostinspector.controller'
+            artifactId = 'CloudCostInspector'
+            from components.java
+        }
+
+    }
+    repositories {
+        maven {
+            url "https://ankurkumarz.jfrog.io/artifactory"
+            credentials {
+                username = "$usr"
+                password = "$pwd"
+            }
+        }
+    }
+}
+group = 'com.ps.cloudcostinspector'
+description = 'CloudCostInspector'
+java.sourceCompatibility = JavaVersion.VERSION_11
+mainClassName = 'com.ps.cloudcostinspector.CloudCostInspectorApplication'
