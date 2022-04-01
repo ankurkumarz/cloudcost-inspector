@@ -1,7 +1,7 @@
 # cloudcost-inspector
 To inspect cloud cost and advise accordingly
 
-##Features
+## Features
 - Architecture Layer: Controller -> Service -> Repository
 - REST API (OpenAPI Specification)
 - HTTP Standard - API Best Practices for Error Codes
@@ -20,14 +20,14 @@ To inspect cloud cost and advise accordingly
 - Auditing JPA - DONE
 - Prometheus Instrumentation - DONE
 
-##Links
+## Links
 - http://localhost:8080/h2-console
 - http://localhost:8080/api-docs/
 - http://localhost:8080/api-docs.yaml
 change path using springdoc.api-docs.path=/api-docs
 - http://localhost:8080/actuator/prometheus
 
-##References:
+## References:
 - https://spring.io/guides/tutorials/rest/
 - https://github.com/spring-guides/tut-rest
 - https://medium.com/@berkaybasoz/spring-boot-h2-database-setup-6996a1c18cc
