@@ -20,7 +20,8 @@ To inspect cloud cost and advise accordingly
 - Auditing JPA - DONE
 - Prometheus Instrumentation - DONE
 
-## Links
+## REST Endpoints
+- http://localhost:8080/compute/virtualmachines
 - http://localhost:8080/h2-console
 - http://localhost:8080/api-docs/
 - http://localhost:8080/api-docs.yaml
