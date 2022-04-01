@@ -25,3 +25,4 @@ gradle.properties
 *.DS_Store*
 .gradle/*
 .idea/*
+.DS_Store
