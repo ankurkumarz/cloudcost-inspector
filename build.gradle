@@ -90,14 +90,6 @@ artifactory {
     }
 }
 publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.ps.cloudcostinspector.controller'
-            artifactId = 'CloudCostInspector'
-            from components.java
-        }
-
-    }
     repositories {
         maven {
             url "https://ankurkumarz.jfrog.io/artifactory"
