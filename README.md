@@ -6,6 +6,7 @@ To inspect cloud cost and advise accordingly
 - REST API (OpenAPI Specification)
 - HTTP Standard - API Best Practices for Error Codes
 - Health Metrics using Actuator
+- Enable Transaction Management
 - JPA (SQL) - DONE
 - JPA (NOSQL - MongoDB)
 - Exception Handling
