@@ -12,7 +12,7 @@ To inspect cloud cost and advise accordingly
 - Exception Handling
 - Global Exception Handler
 - Event-driven Service
-- Docker Image
+- Docker Image - DONE
 - Enable Native Image
 - Java Best Practices - Generics, Streams
 - Lombok (Getter/Setter) Code Generation - DONE

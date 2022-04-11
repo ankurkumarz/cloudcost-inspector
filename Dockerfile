@@ -21,11 +21,12 @@ RUN mkdir -p /root/.ssh/ && \
 # Clone
 RUN mkdir -p /opt/cloudcost
 RUN git clone https://github.com/ankurkumarz/cloudcost-inspector.git /opt/cloudcost
+RUN cd /opt/cloudcost && git checkout main && git pull
 RUN cd /opt/cloudcost && ls -l /opt/cloudcost && \
     ./gradlew assemble
 
 # Stage 2 for Docker Image
-FROM adoptopenjdk/openjdk11:alpine as buildimage
+FROM adoptopenjdk/openjdk11:alpine
 RUN apk --no-cache add ca-certificates git openssh && \
   mkdir -p /opt/cloudcost
 RUN addgroup -S clouduser && adduser -S clouduser -G clouduser
