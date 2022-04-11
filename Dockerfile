@@ -1,5 +1,5 @@
 # Stage 1 for Build
-FROM adoptopenjdk/openjdk8:jdk8u282-b08-alpine as buildimage
+FROM adoptopenjdk/openjdk11:alpine as buildimage
 
 # SSH key as a build argument, if passed
 ARG SSH_PRIVATE_KEY
@@ -18,23 +18,22 @@ RUN mkdir -p /root/.ssh/ && \
     chmod -R 600 /root/.ssh/ && \
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
-# Clone armeria examples repository & build
-RUN mkdir -p /opt/armeria
-RUN git clone https://github.com/line/armeria-examples.git /opt/armeria
-RUN cd /opt/armeria/spring-boot-minimal && \
+# Clone
+RUN mkdir -p /opt/cloudcost
+RUN git clone https://github.com/ankurkumarz/cloudcost-inspector.git /opt/cloudcost
+RUN cd /opt/cloudcost && ls -l /opt/cloudcost && \
     ./gradlew assemble
 
-
 # Stage 2 for Docker Image
-FROM adoptopenjdk/openjdk8:jre8u282-b08-alpine
+FROM adoptopenjdk/openjdk11:alpine as buildimage
 RUN apk --no-cache add ca-certificates git openssh && \
-  mkdir -p /opt/armeria
-RUN addgroup -S armeria && adduser -S armeria -G armeria
+  mkdir -p /opt/cloudcost
+RUN addgroup -S clouduser && adduser -S clouduser -G clouduser
 
 # Copy JAR file from Build
-#COPY --from=buildimage /opt/armeria/spring-boot-minimal/build/libs/spring-boot-minimal.jar /opt/armeria/app.jar
+COPY --from=buildimage /opt/cloudcost/build/libs/CloudCostInspector.jar /opt/cloudcost/
 
-USER armeria:armeria
+USER clouduser:clouduser
 
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/opt/armeria/app.jar"] 
+ENTRYPOINT ["java","-jar","/opt/cloudcost/CloudCostInspector.jar"]

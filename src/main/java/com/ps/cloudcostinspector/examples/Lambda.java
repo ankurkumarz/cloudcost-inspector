@@ -12,5 +12,6 @@ public class Lambda {
         mylist.add("ankur");
         mylist.add("kumar");
         mylist.stream().forEach(tt);
+
     }
 }
