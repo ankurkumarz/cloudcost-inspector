@@ -20,6 +20,7 @@ To inspect cloud cost and advise accordingly
 - Logging using SL4J Lombok - DONE
 - Auditing JPA - DONE
 - Prometheus Instrumentation - DONE
+- Configured GitHub Action to build Docker Image - DONE
 
 ## REST Endpoints
 - http://localhost:8080/compute/virtualmachines
