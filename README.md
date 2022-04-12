@@ -21,6 +21,9 @@ To inspect cloud cost and advise accordingly
 - Auditing JPA - DONE
 - Prometheus Instrumentation - DONE
 - Configured GitHub Action to build Docker Image - DONE
+- Supports Docker Image building using Spring Plugin (gradle bootBuildImage)
+- Build Docker Image using JIB
+- GraphQL
 
 ## REST Endpoints
 - http://localhost:8080/compute/virtualmachines
@@ -44,3 +47,4 @@ change path using springdoc.api-docs.path=/api-docs
 - https://www.baeldung.com/spring-liveness-readiness-probes
 - https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
 - [Prometheus Instrumentation](https://www.baeldung.com/spring-boot-self-hosted-monitoring)
+- [Docker Image in Spring](https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1)

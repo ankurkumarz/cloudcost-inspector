@@ -57,6 +57,9 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
+bootBuildImage{
+    imageName="cloudcostinspector"
+}
 // as per best practices:
 // A recommended practice for larger projects is to declare dependencies without
 // versions and use dependency constraints for version declaration.
