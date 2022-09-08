@@ -4,7 +4,10 @@ import com.ps.cloudcostinspector.domain.VMCompute;
 import com.ps.cloudcostinspector.exceptions.DetailsNotFoundException;
 import com.ps.cloudcostinspector.service.CloudComputeServiceProvider;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
@@ -23,9 +26,9 @@ public class CloudCostController {
     CloudComputeServiceProvider computeService;
 
     @GetMapping("/virtualmachines")
-    List<VMCompute> listAllVirtualMachines() {
+    Page<VMCompute> listAllVirtualMachines(@ParameterObject Pageable pageable) {
         log.info("Request called");
-        return computeService.getVMComputeDetails();
+        return computeService.getVMComputeDetails(pageable);
     }
 
     @GetMapping("/virtualmachines/{id}")

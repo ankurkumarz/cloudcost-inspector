@@ -2,12 +2,21 @@
 To inspect cloud cost and advise accordingly
 
 ## Features
-- Architecture Layer: Controller -> Service -> Repository - DONE
+- Architecture Layers: 
+--------------------------
+       
+       Controller 
+           |
+       Service
+           |
+       Repository
+--------------------------
+- Controller -> Service -> Repository - DONE
 - REST API (OpenAPI Specification)
 - HTTP Standard - API Best Practices for Error Codes
-- Health Metrics using Actuator
+- Health Metrics using Actuator - DONE
 - Enable Transaction Management
-- JPA (SQL) - DONE
+- JPA (SQL) using Spring Data - DONE
 - JPA (NOSQL - MongoDB)
 - Exception Handling
 - Global Exception Handler
@@ -24,14 +33,15 @@ To inspect cloud cost and advise accordingly
 - Supports Docker Image building using Spring Plugin (gradle bootBuildImage)
 - Build Docker Image using JIB
 - GraphQL
+- For Kubernetes (Liveness & Readiness Probe) - DONE
+- Swagger - DONE
+- Pageable Response using Spring springdoc-openapi v1.6.0 - DONE
 
 ## REST Endpoints
-- http://localhost:8080/compute/virtualmachines
-- http://localhost:8080/h2-console
-- http://localhost:8080/api-docs/
-- http://localhost:8080/api-docs.yaml
-change path using springdoc.api-docs.path=/api-docs
-- http://localhost:8080/actuator/prometheus
+- Health: [Prometheus Metrics](http://localhost:8080/actuator/prometheus), [Actuator](http://localhost:8080/actuator/)
+- Docs: [Swagger URL](http://localhost:8080/swagger-ui/index.html), [OpenAPI Docs](http://localhost:8080/api-docs/) 
+- DB: [H2-Console](http://localhost:8080/h2-console)
+- API Endpoints: [VM Rest API](http://localhost:8080/compute/virtualmachines)
 
 ## References:
 - https://spring.io/guides/tutorials/rest/
