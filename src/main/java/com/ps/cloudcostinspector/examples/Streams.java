@@ -1,8 +1,10 @@
 package com.ps.cloudcostinspector.examples;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Streams {
 
@@ -49,4 +51,21 @@ public class Streams {
 
     }
 
+
+    private static boolean lookupValue(List<String> values, String lookupValue) {
+        boolean found = false;
+        values.forEach(n -> n.equalsIgnoreCase(lookupValue));
+        return found;
+    }
+    private static Optional<Integer> sumUsingStream(int loopLength) {
+        Stream<Integer> integers = Stream.iterate(0, i -> i+1);
+        return integers.limit(loopLength).reduce(Integer::sum);
+    }
+    private static void whileLoopWithStream(int loopLength) {
+        Stream<Integer> integers = Stream.iterate(0, i -> i+1);
+        integers.limit(10).forEach(System.out::println);
+    }
+    private static String getLastElementUsingReduce(List<String> values) {
+        return values.stream().reduce((first, second) -> second).orElse(null);
+    }
 }

@@ -2,7 +2,7 @@
 To inspect cloud cost and advise accordingly
 
 ## Features
-- Architecture Layer: Controller -> Service -> Repository
+- Architecture Layer: Controller -> Service -> Repository - DONE
 - REST API (OpenAPI Specification)
 - HTTP Standard - API Best Practices for Error Codes
 - Health Metrics using Actuator
