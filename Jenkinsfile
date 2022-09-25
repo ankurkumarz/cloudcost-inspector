@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         withGradle() {
-          sh 'cd cloudcost-inspector && sh \'./gradlew build\''
+          sh 'ls'
         }
 
       }
