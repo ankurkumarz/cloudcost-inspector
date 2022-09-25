@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         withGradle() {
-          sh 'ls'
+          sh 'gradlew assemble'
         }
 
       }
