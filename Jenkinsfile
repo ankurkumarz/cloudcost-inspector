@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        withGradle()
+      }
+    }
+
   }
 }
