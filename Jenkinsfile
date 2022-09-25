@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Checkout') {
       steps {
         git(url: 'https://github.com/ankurkumarz/cloudcost-inspector.git', branch: 'main')
       }
