@@ -9,7 +9,10 @@ pipeline {
 
     stage('Build') {
       steps {
-        withGradle()
+        withGradle() {
+          sh 'gradle assemble'
+        }
+
       }
     }
 
