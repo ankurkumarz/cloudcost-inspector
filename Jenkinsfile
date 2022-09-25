@@ -19,5 +19,14 @@ pipeline {
       }
     }
 
+    stage('Code Quality') {
+      steps {
+        withSonarQubeEnv('Sonar Server') {
+          sh './gradlew sonarqube'
+        }
+
+      }
+    }
+
   }
 }
