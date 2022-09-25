@@ -21,7 +21,7 @@ pipeline {
 
     stage('Code Quality') {
       steps {
-        withSonarQubeEnv('Sonar Server') {
+        withSonarQubeEnv('Sonar') {
           sh './gradlew sonarqube'
         }
 
