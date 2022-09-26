@@ -1,25 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout') {
+    stage('Code Checkout') {
       steps {
         git(url: 'https://github.com/ankurkumarz/cloudcost-inspector.git', branch: 'main')
       }
     }
 
-    stage('Build') {
+    stage('Code Build') {
       steps {
         sh './gradlew assemble'
       }
     }
 
-    stage('Test') {
-      steps {
-        sh './gradlew test'
-      }
-    }
-
-    stage('Code Quality') {
+    stage('Check Code Quality') {
       environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN')
       }
@@ -30,6 +24,28 @@ pipeline {
 
       }
     }
+
+    stage('Run Tests') {
+      steps {
+        sh './gradlew test'
+      }
+    }
+
+   stage('Package as Docker Container') {
+      steps {
+        sh 'ls'
+      }
+   }
+
+   stage('Publish to Artifactory') {
+      steps {
+        sh 'ls'
+      }
+   }
+
+
+
+
 
   }
 }
