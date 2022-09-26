@@ -19,7 +19,6 @@ pipeline {
       }
     }
 
-
     stage('Check Code Quality') {
       environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN')
@@ -41,9 +40,9 @@ pipeline {
     stage('Check Software Supply Chain Security - SCA') {
       steps {
         sh 'ls'
+        sh './gradlew dependencies --write-locks '
       }
     }
-
 
     stage('Run Unit Performance Tests') {
       steps {
@@ -51,22 +50,17 @@ pipeline {
       }
     }
 
-
-   stage('Package as Docker Container') {
+    stage('Package as Docker Container') {
       steps {
         sh 'ls'
       }
-   }
+    }
 
-   stage('Publish to Artifactory') {
+    stage('Publish to Artifactory') {
       steps {
         sh 'ls'
       }
-   }
-
-
-
-
+    }
 
   }
 }
