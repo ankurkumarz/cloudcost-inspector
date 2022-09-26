@@ -13,6 +13,13 @@ pipeline {
       }
     }
 
+    stage('Run Unit Tests') {
+      steps {
+        sh './gradlew test'
+      }
+    }
+
+
     stage('Check Code Quality') {
       environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN')
@@ -22,12 +29,6 @@ pipeline {
           sh './gradlew sonarqube -Dsonar.login=${SONAR_TOKEN}'
         }
 
-      }
-    }
-
-    stage('Run Unit Tests') {
-      steps {
-        sh './gradlew test'
       }
     }
 
