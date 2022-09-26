@@ -25,11 +25,24 @@ pipeline {
       }
     }
 
-    stage('Run Tests') {
+    stage('Run Unit Tests') {
       steps {
         sh './gradlew test'
       }
     }
+
+    stage('Run Security Scan') {
+      steps {
+        sh 'ls'
+      }
+    }
+
+    stage('Run Unit Performance Tests') {
+      steps {
+        sh 'ls'
+      }
+    }
+
 
    stage('Package as Docker Container') {
       steps {
