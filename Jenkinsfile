@@ -38,6 +38,13 @@ pipeline {
       }
     }
 
+    stage('Check Software Supply Chain Security - SCA') {
+      steps {
+        sh 'ls'
+      }
+    }
+
+
     stage('Run Unit Performance Tests') {
       steps {
         sh 'ls'

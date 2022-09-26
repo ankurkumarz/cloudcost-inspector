@@ -33,7 +33,12 @@ repositories {
     }
 }
 configurations {
-    published
+    compileClasspath {
+        resolutionStrategy.activateDependencyLocking()
+    }
+}
+dependencyLocking {
+    lockFile = file("$projectDir/gradle.lockfile")
 }
 ext {
     set('springCloudVersion', "2021.0.1")
