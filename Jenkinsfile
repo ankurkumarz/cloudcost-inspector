@@ -20,9 +20,12 @@ pipeline {
     }
 
     stage('Code Quality') {
+      environment {
+        SONAR_TOKEN = credentials('SONAR_TOKEN')
+      }
       steps {
         withSonarQubeEnv('Sonar') {
-          sh './gradlew sonarqube'
+          sh './gradlew sonarqube -Dsonar.login=${SONAR_TOKEN}'
         }
 
       }
