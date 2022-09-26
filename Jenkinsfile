@@ -39,8 +39,8 @@ pipeline {
 
     stage('Check Software Supply Chain Security - SCA') {
       steps {
-        sh 'ls'
         sh './gradlew dependencies --write-locks '
+        sh 'phylum analyze gradle.lockfile'
       }
     }
 
