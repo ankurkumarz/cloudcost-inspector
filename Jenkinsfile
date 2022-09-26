@@ -1,13 +1,13 @@
 pipeline {
   agent any
   stages {
-    stage('Code Checkout') {
+    stage('Checkout Code') {
       steps {
         git(url: 'https://github.com/ankurkumarz/cloudcost-inspector.git', branch: 'main')
       }
     }
 
-    stage('Code Build') {
+    stage('Build Code') {
       steps {
         sh './gradlew assemble'
       }
