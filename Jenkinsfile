@@ -32,7 +32,7 @@ pipeline {
       }
     }
 
-    stage('Run Security Scan') {
+    stage('Run Static Security Scan') {
       steps {
         sh 'ls'
       }
