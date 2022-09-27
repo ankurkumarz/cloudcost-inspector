@@ -45,7 +45,7 @@ pipeline {
         sh './gradlew dependencies --write-locks '
         snykSecurity(
           snykInstallation: 'SNYK',
-          snykTokenId:''${SNYK_TOKEN}''
+          snykTokenId:'${SNYK_TOKEN}'
         )
         //sh 'phylum analyze gradle.lockfile'
       }
