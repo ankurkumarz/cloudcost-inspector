@@ -37,6 +37,10 @@ To inspect cloud cost and advise accordingly
 - Swagger - DONE
 - Pageable Response using Spring springdoc-openapi v1.6.0 - DONE
 
+## Jenkins Setup
+- Tools required: Git, Gradle, Docker
+- Plugins: Snyk Security, SonarQube
+
 ## REST Endpoints
 - Health: [Prometheus Metrics](http://localhost:8080/actuator/prometheus), [Actuator](http://localhost:8080/actuator/)
 - Docs: [Swagger URL](http://localhost:8080/swagger-ui/index.html), [OpenAPI Docs](http://localhost:8080/api-docs/) 
