@@ -38,14 +38,11 @@ pipeline {
     }
 
     stage('Check Software Supply Chain Security - SCA') {
-      environment {
-        SNYK_TOKEN = credentials('SNYK_API_TOKEN')
-      }
       steps {
         sh './gradlew dependencies --write-locks '
         snykSecurity(
           snykInstallation: 'SNYK',
-          snykTokenId:'${SNYK_TOKEN}'
+          snykTokenId:'SNYK_API_TOKEN'
         )
         //sh 'phylum analyze gradle.lockfile'
       }
