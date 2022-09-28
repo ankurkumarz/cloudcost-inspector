@@ -1,0 +1,51 @@
+pipeline {
+  agent any
+  stages {
+    stage('Fetch Tagged Docker Image') {
+      steps {
+        git(url: 'https://github.com/ankurkumarz/cloudcost-inspector.git', branch: 'main')
+      }
+    }
+
+    stage('Deploy to DEV') {
+      steps {
+        sh './gradlew assemble'
+      }
+    }
+
+    stage('Run Sanity Testing') {
+      steps {
+        sh 'ls'
+      }
+    }
+
+    stage('Deploy to QA') {
+      steps {
+        sh 'ls'
+      }
+    }
+
+    stage('Run QA Regression Testing') {
+      steps {
+        sh 'ls'
+      }
+    }
+    stage('Deploy to STG') {
+      steps {
+        sh 'ls'
+      }
+    }
+
+    stage('Run STG Regression Testing') {
+      steps {
+        sh 'ls'
+      }
+    }
+    stage('Deploy to PRD') {
+      steps {
+        sh 'ls'
+      }
+    }
+
+  }
+}
