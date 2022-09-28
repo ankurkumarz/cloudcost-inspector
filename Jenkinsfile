@@ -13,7 +13,7 @@ pipeline {
       }
     }
 
-    stage('Run Unit Tests') {
+    stage('Run Unit Test') {
       steps {
         sh './gradlew test'
       }
@@ -49,7 +49,13 @@ pipeline {
       }
     }
 
-    stage('Run Unit Performance Tests') {
+    stage('Run Unit Performance Test') {
+      steps {
+        sh 'ls'
+      }
+    }
+
+    stage('Run Integration Test') {
       steps {
         sh 'ls'
       }
