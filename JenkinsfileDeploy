@@ -43,7 +43,7 @@ pipeline {
     }
     stage('Deploy to PRD') {
       steps {
-        sh 'ls -a'
+        sh 'ls'
       }
     }
   }
