@@ -4,7 +4,7 @@ metadata:
   name: "cloudcost-inspector"
   annotations:
     backstage.io/techdocs-ref: dir:.
-    jenkins.io/job-full-name: devlocal:cloudcost-inspector
+    jenkins.io/job-full-name: devlocal:cloudcost-inspector/develop
 spec:
   type: service
   lifecycle: experimental
