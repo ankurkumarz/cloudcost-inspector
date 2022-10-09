@@ -2,6 +2,10 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: "cloudcost-inspector"
+  links:
+    - url: https://techexperiment.onrender.com/
+      title: Technical Experimentation Details
+      icon: dashboard
   annotations:
     backstage.io/techdocs-ref: dir:.
     jenkins.io/job-full-name: "devlocal:cloudcost-inspector"
