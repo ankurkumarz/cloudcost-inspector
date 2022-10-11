@@ -5,7 +5,6 @@ metadata:
   description: The API for analyzing Cloud Services
 spec:
   type: openapi
-  openapi: 3.0.1
   lifecycle: production
   owner: guest 
   definition:
