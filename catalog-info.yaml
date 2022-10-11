@@ -11,6 +11,7 @@ metadata:
     jenkins.io/job-full-name: "devlocal:cloudcost-inspector"
     sonarqube.org/project-key: "com.ps.cloudcostinspector:CloudCostInspector"
     lighthouse.com/website-url: https://techexperiment.onrender.com
+    backstage.io/adr-location: ./docs
 spec:
   type: service
   lifecycle: experimental
