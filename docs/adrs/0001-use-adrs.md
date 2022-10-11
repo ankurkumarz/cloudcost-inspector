@@ -1,10 +1,3 @@
----
-id: adrs-adr001
-title: 'ADR001: Architecture Decision Record (ADR) log'
-# prettier-ignore
-description: Architecture Decision Record (ADR) logs as a reference point for the team
----
-
 ## Decision
 
 A decision was made to store ADRs in a log in the project repository
