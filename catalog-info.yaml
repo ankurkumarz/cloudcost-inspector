@@ -15,3 +15,5 @@ spec:
   type: service
   lifecycle: experimental
   owner: "user:guest"
+  providesApis:
+    - cloud-inspector-api
