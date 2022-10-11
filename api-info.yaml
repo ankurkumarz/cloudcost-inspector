@@ -8,4 +8,4 @@ spec:
   lifecycle: production
   owner: guest 
   definition:
-    $text: https://github.com/ankurkumarz/cloudcost-inspector/blob/main/api-info.yaml
+    $text: https://github.com/ankurkumarz/cloudcost-inspector/blob/main/api-docs.yaml
