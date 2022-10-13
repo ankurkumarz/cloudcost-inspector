@@ -13,6 +13,7 @@ metadata:
     lighthouse.com/website-url: https://techexperiment.onrender.com
     backstage.io/adr-location: docs/adrs
     newrelic.com/dashboard-guid: MzY1NTAzOHxWSVp8REFTSEJPQVJEfGRhOjIxMDkxOTI
+    github.com/project-slug: ankurkumarz/cloudcost-inspector
 spec:
   type: service
   lifecycle: experimental
