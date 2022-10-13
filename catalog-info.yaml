@@ -12,7 +12,7 @@ metadata:
     sonarqube.org/project-key: "com.ps.cloudcostinspector:CloudCostInspector"
     lighthouse.com/website-url: https://techexperiment.onrender.com
     backstage.io/adr-location: docs/adrs
-    newrelic.com/dashboard-guid: MzY1NTAzOHxWSVp8REFTSEJPQVJEfGRhOjIxMDkxOTI
+    newrelic.com/dashboard-guid: MzY1NTAzOHxWSVp8REFTSEJPQVJEfGRhOjIxMTU1NzQ
     github.com/project-slug: ankurkumarz/cloudcost-inspector
 spec:
   type: service
