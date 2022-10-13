@@ -14,6 +14,7 @@ metadata:
     backstage.io/adr-location: docs/adrs
     newrelic.com/dashboard-guid: MzY1NTAzOHxWSVp8REFTSEJPQVJEfGRhOjIxMTU1NzQ
     github.com/project-slug: ankurkumarz/cloudcost-inspector
+    jira/project-key: CCI
 spec:
   type: service
   lifecycle: experimental
