@@ -3,14 +3,24 @@ To inspect cloud cost and advise accordingly
 
 ## Features
 - Architecture Layers: 
---------------------------
-       
-       Controller 
-           |
-       Service
-           |
-       Repository
---------------------------
+```mermaid
+flowchart TD
+  subgraph "Controller"
+    direction TB
+      CloudCostController
+  end
+  subgraph "Service"
+    direction TB
+      CloudComputeServiceProvider
+  end
+  subgraph "Repository"
+    direction TB
+      VMComputeRepository --> DB
+  end
+  Controller --> Service
+  Service --> Repository
+```
+```
 - Controller -> Service -> Repository - DONE
 - REST API (OpenAPI Specification)
 - HTTP Standard - API Best Practices for Error Codes
