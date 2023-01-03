@@ -27,9 +27,11 @@ public class CloudComputeServiceProvider {
 
     public Page<VMCompute> getVMComputeDetails(Pageable pageable) {
 
-        log.info(computeRepository.findBYCloudVendor("AWS",
-                Pageable.ofSize(1)).toString());
         return computeRepository.findAll(pageable);
+    }
+
+    public Page<VMCompute> getVMComputeDetails(Pageable pageable, String cloudVendor) {
+        return computeRepository.findByCloudVendor(cloudVendor, pageable);
     }
 
     public VMCompute getVMComputeDetails(Long id) throws DetailsNotFoundException
