@@ -48,7 +48,7 @@ flowchart TD
 - Pageable Response using Spring - DONE
 - Spring Boot 3 with OpenAPI (with actuator integration) - DONE
 - Use Buildpack
-
+```
 ## Jenkins Setup
 - Tools required: Git, Gradle, Docker
 - Plugins: Snyk Security, SonarQube
