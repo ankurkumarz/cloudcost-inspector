@@ -2,7 +2,7 @@ repo_name: ankurkumarz/cloudcost-inspector
 report_id: c19c1e11c65f870dd80a68d6c06cecab
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T08:24:46+00:00'
+timestamp: '2024-02-29T19:01:14+00:00'
 requested_by: ankurkumarz
 provider: github
 branch: main
@@ -20,7 +20,7 @@ tools:
   detection_source_url: https://github.com/ankurkumarz/cloudcost-inspector
   detection_source: Repo Metadata
 - name: Swift
-  description: 'An innovative new programming language for Cocoa and Cocoa Touch. '
+  description: An innovative new programming language for Cocoa and Cocoa Touch.
   website_url: https://developer.apple.com/swift/
   license: Apache-2.0
   open_source: true
