@@ -47,7 +47,7 @@ flowchart TD
 - Swagger - DONE
 - Pageable Response using Spring - DONE
 - Spring Boot 3 with OpenAPI (with actuator integration) - DONE
-- Use Buildpack
+- Use Buildpack (Paketo) - DONE
 ```
 ## Jenkins Setup
 - Tools required: Git, Gradle, Docker

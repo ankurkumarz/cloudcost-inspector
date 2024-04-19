@@ -17,6 +17,7 @@ plugins {
     id 'com.appland.appmap' version '1.1.0'
     id 'org.graalvm.buildtools.native' version '0.9.18'
     id 'org.hibernate.orm' version '6.1.6.Final'
+    id 'org.cyclonedx.bom' version '1.7.3'
 }
 apply plugin: 'java'
 apply plugin: 'maven-publish'
@@ -94,38 +95,38 @@ bootBuildImage{
     imageName="cloudcostinspector"
 }
 
-artifactory {
-    contextUrl = 'https://ankurkumarz.jfrog.io/artifactory'
-    publish {
-        repository {
-            repoKey = "default-maven-local"
-            username = "$usr"
-            password = "$pwd"
-        }
-        publishBuildInfo = true
-        publishArtifacts = true
-        publishPom = true
-        defaults {
-            // Reference to Gradle publications defined in the build script.
-            // This is how we tell the Artifactory Plugin which artifacts should be
-            // published to Artifactory.
-            publications('mavenJava')
-            publishArtifacts = true
-            // Properties to be attached to the published artifacts.
-            properties = ['qa.level': 'basic', 'dev.team' : 'core']
-            publishPom = true // Publish generated POM files to Artifactory (true by default)
-            publishIvy = true // Publish generated Ivy descriptor files to Artifactory (true by default)
-        }
-    }
-}
-publishing {
-    repositories {
-        maven {
-            url "https://ankurkumarz.jfrog.io/artifactory"
-            credentials {
-                username = "$usr"
-                password = "$pwd"
-            }
-        }
-    }
-}
+// artifactory {
+//     contextUrl = 'https://ankurkumarz.jfrog.io/artifactory'
+//     publish {
+//         repository {
+//             repoKey = "default-maven-local"
+//             username = "$usr"
+//             password = "$pwd"
+//         }
+//         publishBuildInfo = true
+//         publishArtifacts = true
+//         publishPom = true
+//         defaults {
+//             // Reference to Gradle publications defined in the build script.
+//             // This is how we tell the Artifactory Plugin which artifacts should be
+//             // published to Artifactory.
+//             publications('mavenJava')
+//             publishArtifacts = true
+//             // Properties to be attached to the published artifacts.
+//             properties = ['qa.level': 'basic', 'dev.team' : 'core']
+//             publishPom = true // Publish generated POM files to Artifactory (true by default)
+//             publishIvy = true // Publish generated Ivy descriptor files to Artifactory (true by default)
+//         }
+//     }
+// }
+// publishing {
+//     repositories {
+//         maven {
+//             url "https://ankurkumarz.jfrog.io/artifactory"
+//             credentials {
+//                 username = "$usr"
+//                 password = "$pwd"
+//             }
+//         }
+//     }
+// }
