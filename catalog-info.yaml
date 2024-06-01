@@ -10,7 +10,14 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     jenkins.io/job-full-name: "devlocal:cloudcost-inspector"
     sonarqube.org/project-key: "com.ps.cloudcostinspector:CloudCostInspector"
+    lighthouse.com/website-url: https://techexperiment.onrender.com
+    backstage.io/adr-location: docs/adrs
+    newrelic.com/dashboard-guid: MzY1NTAzOHxWSVp8REFTSEJPQVJEfGRhOjIxMTU1NzQ
+    github.com/project-slug: ankurkumarz/cloudcost-inspector
+    jira/project-key: CCI
 spec:
   type: service
   lifecycle: experimental
   owner: "user:guest"
+  providesApis:
+    - cloud-inspector-api

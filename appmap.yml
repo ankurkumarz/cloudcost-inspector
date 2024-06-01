@@ -1,0 +1,7 @@
+name: cloudcost-inspector
+packages:
+  - path: com.ps.cloudcostinspector
+test_recording:
+  test_commands:
+    - env: {}
+      command: ./gradlew test
