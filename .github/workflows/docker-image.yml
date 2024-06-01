@@ -24,6 +24,6 @@ jobs:
       run: |
           # docker build . --file Dockerfile --tag cloud-cost-inspector:$(date +%s)
           docker build . --tag ghcr.io/ankurkumarz/cloud-cost-inspector:latest
-          docker push ghcr.io/ankurkumar/cloud-cost-inspector:latest
+          docker push ghcr.io/ankurkumarz/cloud-cost-inspector:latest
 
   
