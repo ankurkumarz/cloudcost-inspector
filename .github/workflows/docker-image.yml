@@ -7,11 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -24,4 +21,8 @@ jobs:
       with:
         arguments: build    
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag cloud-cost-inspector:$(date +%s)
+      run: 
+          docker build . --file Dockerfile --tag cloud-cost-inspector:$(date +%s)
+          docker push ghcr.io/ankurkumar/cloud-cost-inspector:latest
+
+  
