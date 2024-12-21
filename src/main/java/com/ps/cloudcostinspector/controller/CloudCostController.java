@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/compute")
 @Slf4j
@@ -29,13 +30,12 @@ public class CloudCostController {
     }
 
     @GetMapping("/virtualmachines/cloud/{vendor}")
-    Page<VMCompute> getVMComputeDetailsByVendor(@ParameterObject Pageable pageable, @PathVariable String vendorName)
-            throws DetailsNotFoundException {
+    Page<VMCompute> getVMComputeDetailsByVendor(@ParameterObject Pageable pageable, @PathVariable String vendorName) throws DetailsNotFoundException {
         return computeService.getVMComputeDetails(pageable, vendorName);
     }
 
 
-    @PostMapping ("/virtualmachines")
+    @PostMapping("/virtualmachines")
     VMCompute saveVMComputeDetails(@RequestBody VMCompute vmCompute) {
         try {
             log.info("Request called");
