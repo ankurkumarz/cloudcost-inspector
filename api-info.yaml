@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: cloud-inspector-api 
+  description: The API for analyzing Cloud Services
+spec:
+  type: openapi
+  lifecycle: production
+  owner: guest 
+  definition:
+    $text: https://github.com/ankurkumarz/cloudcost-inspector/blob/main/api-docs.yaml

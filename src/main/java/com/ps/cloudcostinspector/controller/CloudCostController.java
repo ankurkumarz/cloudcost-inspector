@@ -4,19 +4,12 @@ import com.ps.cloudcostinspector.domain.VMCompute;
 import com.ps.cloudcostinspector.exceptions.DetailsNotFoundException;
 import com.ps.cloudcostinspector.service.CloudComputeServiceProvider;
 import lombok.extern.slf4j.Slf4j;
-import org.springdoc.api.annotations.ParameterObject;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toList;
 @RestController
 @RequestMapping("/compute")
 @Slf4j
@@ -36,16 +29,13 @@ public class CloudCostController {
         return computeService.getVMComputeDetails(id);
     }
 
-//    @GetMapping("/virtualmachines/cloud/{vendor}")
-//    List<VMCompute> getVMComputeDetailsByVendor(@PathVariable String vendorName)
-//            throws DetailsNotFoundException {
-//        return computeService.getVMComputeDetails()
-//                .stream()
-//                .filter(VMCompute::getVendor).
-//    }
+    @GetMapping("/virtualmachines/cloud/{vendor}")
+    Page<VMCompute> getVMComputeDetailsByVendor(@ParameterObject Pageable pageable, @PathVariable String vendorName) throws DetailsNotFoundException {
+        return computeService.getVMComputeDetails(pageable, vendorName);
+    }
 
 
-    @PostMapping ("/virtualmachines")
+    @PostMapping("/virtualmachines")
     VMCompute saveVMComputeDetails(@RequestBody VMCompute vmCompute) {
         try {
             log.info("Request called");

@@ -14,6 +14,6 @@ public interface VMComputeRepository
     @Query(value = "SELECT * FROM VMCOMPUTE WHERE CLOUD_VENDOR = ?1",
            countQuery = "SELECT count(*) FROM VMCOMPUTE WHERE CLOUD_VENDOR = ?1",
             nativeQuery = true)
-    Page<VMCompute> findBYCloudVendor(String cloudVendor, Pageable pageable);
+    Page<VMCompute> findByCloudVendor(String cloudVendor, Pageable pageable);
 
 }

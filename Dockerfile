@@ -1,5 +1,5 @@
 # Stage 1 for Build
-FROM adoptopenjdk/openjdk11:alpine as buildimage
+FROM openjdk:17-alpine as buildimage
 
 # SSH key as a build argument, if passed
 ARG SSH_PRIVATE_KEY
@@ -26,7 +26,7 @@ RUN cd /opt/cloudcost && ls -l /opt/cloudcost && \
     ./gradlew assemble
 
 # Stage 2 for Docker Image
-FROM adoptopenjdk/openjdk11:alpine
+FROM openjdk:17-alpine
 RUN apk --no-cache add ca-certificates git openssh && \
   mkdir -p /opt/cloudcost
 RUN addgroup -S clouduser && adduser -S clouduser -G clouduser

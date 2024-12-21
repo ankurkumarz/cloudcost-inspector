@@ -2,7 +2,9 @@ site_name: Root docs
 
 nav:
   - Home: index.md
-  - Local development: local-development.md
 
 docs_dir: docs
+
+plugins:
+  - techdocs-core
 

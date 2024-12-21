@@ -9,16 +9,25 @@ buildscript {
 plugins {
     id 'maven-publish'
     id 'application'
-    id 'org.springframework.boot' version '2.6.6'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '3.0.1'
+    id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
     id 'com.jfrog.artifactory' version 'latest.release'
     id "org.sonarqube" version "3.2.0"
+    id 'com.appland.appmap' version '1.1.0'
+    id 'org.graalvm.buildtools.native' version '0.9.18'
+    id 'org.hibernate.orm' version '6.1.6.Final'
+    id 'org.cyclonedx.bom' version '1.7.3'
 }
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'groovy'
+
+group = 'com.ps.cloudcostinspector'
+description = 'CloudCostInspector'
+sourceCompatibility = '17'
+mainClassName = 'com.ps.cloudcostinspector.CloudCostInspectorApplication'
 
 repositories {
     mavenCentral()
@@ -32,16 +41,17 @@ repositories {
         }
     }
 }
+ext {
+    set('springCloudVersion', "2022.0.0")
+}
+
 configurations {
-    compileClasspath {
-        resolutionStrategy.activateDependencyLocking()
+    compileOnly {
+        extendsFrom annotationProcessor
     }
 }
 dependencyLocking {
     lockFile = file("$projectDir/gradle.lockfile")
-}
-ext {
-    set('springCloudVersion', "2021.0.1")
 }
 
 dependencies {
@@ -51,16 +61,25 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springdoc:springdoc-openapi-ui'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'com.h2database:h2'
+
 }
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+// as per best practices:
+// A recommended practice for larger projects is to declare dependencies without
+// versions and use dependency constraints for version declaration.
+dependencies {
+    constraints {
+        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
     }
 }
 sonarqube {
@@ -75,50 +94,39 @@ sonarqube {
 bootBuildImage{
     imageName="cloudcostinspector"
 }
-// as per best practices:
-// A recommended practice for larger projects is to declare dependencies without
-// versions and use dependency constraints for version declaration.
-dependencies {
-    constraints {
-        implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
-    }
-}
-artifactory {
-    contextUrl = 'https://ankurkumarz.jfrog.io/artifactory'
-    publish {
-        repository {
-            repoKey = "default-maven-local"
-            username = "$usr"
-            password = "$pwd"
-        }
-        publishBuildInfo = true
-        publishArtifacts = true
-        publishPom = true
-        defaults {
-            // Reference to Gradle publications defined in the build script.
-            // This is how we tell the Artifactory Plugin which artifacts should be
-            // published to Artifactory.
-            publications('mavenJava')
-            publishArtifacts = true
-            // Properties to be attached to the published artifacts.
-            properties = ['qa.level': 'basic', 'dev.team' : 'core']
-            publishPom = true // Publish generated POM files to Artifactory (true by default)
-            publishIvy = true // Publish generated Ivy descriptor files to Artifactory (true by default)
-        }
-    }
-}
-publishing {
-    repositories {
-        maven {
-            url "https://ankurkumarz.jfrog.io/artifactory"
-            credentials {
-                username = "$usr"
-                password = "$pwd"
-            }
-        }
-    }
-}
-group = 'com.ps.cloudcostinspector'
-description = 'CloudCostInspector'
-java.sourceCompatibility = JavaVersion.VERSION_11
-mainClassName = 'com.ps.cloudcostinspector.CloudCostInspectorApplication'
+
+// artifactory {
+//     contextUrl = 'https://ankurkumarz.jfrog.io/artifactory'
+//     publish {
+//         repository {
+//             repoKey = "default-maven-local"
+//             username = "$usr"
+//             password = "$pwd"
+//         }
+//         publishBuildInfo = true
+//         publishArtifacts = true
+//         publishPom = true
+//         defaults {
+//             // Reference to Gradle publications defined in the build script.
+//             // This is how we tell the Artifactory Plugin which artifacts should be
+//             // published to Artifactory.
+//             publications('mavenJava')
+//             publishArtifacts = true
+//             // Properties to be attached to the published artifacts.
+//             properties = ['qa.level': 'basic', 'dev.team' : 'core']
+//             publishPom = true // Publish generated POM files to Artifactory (true by default)
+//             publishIvy = true // Publish generated Ivy descriptor files to Artifactory (true by default)
+//         }
+//     }
+// }
+// publishing {
+//     repositories {
+//         maven {
+//             url "https://ankurkumarz.jfrog.io/artifactory"
+//             credentials {
+//                 username = "$usr"
+//                 password = "$pwd"
+//             }
+//         }
+//     }
+// }

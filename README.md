@@ -3,14 +3,24 @@ To inspect cloud cost and advise accordingly
 
 ## Features
 - Architecture Layers: 
---------------------------
-       
-       Controller 
-           |
-       Service
-           |
-       Repository
---------------------------
+```mermaid
+flowchart TD
+  subgraph "Controller"
+    direction TB
+      CloudCostController
+  end
+  subgraph "Service"
+    direction TB
+      CloudComputeServiceProvider
+  end
+  subgraph "Repository"
+    direction TB
+      VMComputeRepository --> DB
+  end
+  Controller --> Service
+  Service --> Repository
+```
+```
 - Controller -> Service -> Repository - DONE
 - REST API (OpenAPI Specification)
 - HTTP Standard - API Best Practices for Error Codes
@@ -35,19 +45,23 @@ To inspect cloud cost and advise accordingly
 - GraphQL
 - For Kubernetes (Liveness & Readiness Probe) - DONE
 - Swagger - DONE
-- Pageable Response using Spring springdoc-openapi v1.6.0 - DONE
-
+- Pageable Response using Spring - DONE
+- Spring Boot 3 with OpenAPI (with actuator integration) - DONE
+- Use Buildpack (Paketo) - DONE
+```
 ## Jenkins Setup
 - Tools required: Git, Gradle, Docker
 - Plugins: Snyk Security, SonarQube
 
 ## REST Endpoints
 - Health: [Prometheus Metrics](http://localhost:8080/actuator/prometheus), [Actuator](http://localhost:8080/actuator/)
-- Docs: [Swagger URL](http://localhost:8080/swagger-ui/index.html), [OpenAPI Docs](http://localhost:8080/api-docs/) 
+- Docs: [Swagger URL](http://localhost:8080/swagger-ui/index.html)
+- [OpenAPI Docs](http://localhost:8080/api-docs/)
 - DB: [H2-Console](http://localhost:8080/h2-console)
 - API Endpoints: [VM Rest API](http://localhost:8080/compute/virtualmachines)
 
 ## References:
+- [For Spring Boot 3 with OpenAPI](https://springdoc.org/v2/)
 - https://spring.io/guides/tutorials/rest/
 - https://github.com/spring-guides/tut-rest
 - https://medium.com/@berkaybasoz/spring-boot-h2-database-setup-6996a1c18cc
