@@ -9,14 +9,14 @@ buildscript {
 plugins {
     id 'maven-publish'
     id 'application'
-    id 'org.springframework.boot' version '3.0.1'
+    id 'org.springframework.boot' version '3.3.0'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
     id 'com.jfrog.artifactory' version 'latest.release'
     id "org.sonarqube" version "3.2.0"
     id 'com.appland.appmap' version '1.1.0'
     id 'org.graalvm.buildtools.native' version '0.9.18'
-    id 'org.hibernate.orm' version '6.1.6.Final'
+    id 'org.hibernate.orm' version '6.5.2.Final'
     id 'org.cyclonedx.bom' version '1.7.3'
 }
 apply plugin: 'java'
@@ -26,7 +26,7 @@ apply plugin: 'groovy'
 
 group = 'com.ps.cloudcostinspector'
 description = 'CloudCostInspector'
-sourceCompatibility = '17'
+sourceCompatibility = '21'
 mainClassName = 'com.ps.cloudcostinspector.CloudCostInspectorApplication'
 
 repositories {
@@ -42,7 +42,7 @@ repositories {
     }
 }
 ext {
-    set('springCloudVersion', "2022.0.0")
+    set('springCloudVersion', "2023.0.5")
 }
 
 configurations {
@@ -79,7 +79,7 @@ dependencyManagement {
 // versions and use dependency constraints for version declaration.
 dependencies {
     constraints {
-        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
     }
 }
 sonarqube {
