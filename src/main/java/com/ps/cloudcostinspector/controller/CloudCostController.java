@@ -28,13 +28,12 @@ public class CloudCostController {
     VMCompute getVMComputeDetailsById(@PathVariable Long id) throws DetailsNotFoundException {
         return computeService.getVMComputeDetails(id);
     }
-
     @GetMapping("/virtualmachines/cloud/{vendor}")
     Page<VMCompute> getVMComputeDetailsByVendor(@ParameterObject Pageable pageable, @PathVariable String vendorName) throws DetailsNotFoundException {
         return computeService.getVMComputeDetails(pageable, vendorName);
     }
 
-
+    // Add comments to this method - AI!
     @PostMapping("/virtualmachines")
     VMCompute saveVMComputeDetails(@RequestBody VMCompute vmCompute) {
         try {
