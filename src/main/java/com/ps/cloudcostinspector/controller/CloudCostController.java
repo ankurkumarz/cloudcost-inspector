@@ -33,7 +33,14 @@ public class CloudCostController {
         return computeService.getVMComputeDetails(pageable, vendorName);
     }
 
-    // Add comments to this method - AI!
+    /**
+     * Saves the details of a virtual machine.
+     * If the virtual machine with the given ID is not found, it will be saved.
+     * Otherwise, it returns the existing virtual machine details.
+     *
+     * @param vmCompute the virtual machine details to save
+     * @return the saved or existing virtual machine details
+     */
     @PostMapping("/virtualmachines")
     VMCompute saveVMComputeDetails(@RequestBody VMCompute vmCompute) {
         try {
